@@ -5,8 +5,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
+                echo "Compile staage"
                 }
             }
         }
@@ -14,8 +13,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn test'
+                 echo "Testting staage"
                 }
             }
         }
@@ -23,10 +21,15 @@ pipeline {
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn deploy'
+                echo "Deployment staage"
                 }
             }
         }
     }
+ post { 
+        always { 
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
+
 }
