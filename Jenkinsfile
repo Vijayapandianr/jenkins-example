@@ -8,7 +8,7 @@ pipeline {
                 echo "Compile staage"
                 }
             }
-        }
+        
 
         stage ('Testing Stage') {
 
@@ -16,7 +16,7 @@ pipeline {
                  echo "Testting staage"
                 }
             }
-        }
+        
 
 
         stage ('Deployment Stage') {
@@ -25,7 +25,7 @@ pipeline {
                 }
             }
         }
-    }
+    
  post { 
         always { 
             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
