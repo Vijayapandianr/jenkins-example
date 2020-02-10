@@ -1,3 +1,4 @@
+import groovy.io.FileType
 pipeline {
     agent  {
          label 'sam_node'
@@ -14,11 +15,13 @@ pipeline {
         stage ('File Counting') {
 
             steps {
-                def tmpDirPath = "${env.workspace}//src"
-                echo tmpDirPath
-		         def tmpDir = new File(tmpDirPath)
-                    tmpDir.eachFileRecurse(FileType.FILES) { file ->
-                        echo "File: ${file}"
+		    script{
+			def tmpDirPath = "${env.workspace}//src"
+			echo tmpDirPath
+			def tmpDir = new File(tmpDirPath)
+			    tmpDir.eachFileRecurse(FileType.FILES) { file ->
+			    echo "File: ${file}"
+		    	}
                     }
                 }
             }
