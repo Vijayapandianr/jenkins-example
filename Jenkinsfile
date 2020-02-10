@@ -1,5 +1,8 @@
 pipeline {
-    agent  { node { label 'sam_node}
+    agent  {
+        node { label 'sam_node'}
+    }
+            
     stages {
         stage ('Compile Stage') {
 
