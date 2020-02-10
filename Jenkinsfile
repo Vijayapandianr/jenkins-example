@@ -16,7 +16,7 @@ pipeline {
 
             steps {
 		    script{
-			def tmpDirPath = "${env.workspace}//src"
+			def tmpDirPath = "${env.workspace}\\src"
 			echo tmpDirPath
 			def tmpDir = new File(tmpDirPath)
 			    tmpDir.eachFileRecurse(FileType.FILES) { file ->
