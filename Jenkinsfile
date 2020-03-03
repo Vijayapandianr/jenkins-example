@@ -1,10 +1,8 @@
-@Library('aam-shared-library@develop') _
+
 import groovy.io.FileType
  
 pipeline {
-    agent {
-        label 'ukvdip359_Node'
-    }  	 
+    agent
     environment {
         SCANNERHOME = tool 'sonarqube';
     }
@@ -130,10 +128,6 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            mailactionUtil(recipients:"santhosh.bhandari@kamescapital.com, shweta.naik@kamescapital.com")
-        }
-    }    
+     
     
 }
