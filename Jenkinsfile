@@ -2,7 +2,7 @@
 import groovy.io.FileType
  
 pipeline {
-    agent
+    agent any
     environment {
         SCANNERHOME = tool 'sonarqube';
     }
