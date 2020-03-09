@@ -3,10 +3,7 @@ import groovy.io.FileType
  
 pipeline {
     agent any
-    environment {
-        SCANNERHOME = tool 'sonarqube';
-    }
- 
+    
     stages {
         stage('Checkout Stage') {
             steps {
