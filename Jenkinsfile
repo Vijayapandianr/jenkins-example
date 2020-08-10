@@ -22,6 +22,23 @@ pipeline {
 			}
 		}
 
+		     stage ('File Counting') {
+
+            steps {
+		    script{
+			        
+                    currentBuild.rawBuild.getChangeSets().each { cs ->
+                      cs.getItems().each { item ->
+                        item.getAffectedFiles().each { f ->
+                          println f
+                        }
+                      }
+                    }
+                }
+            }
+        }
+        
+
 		        stage('Sonar scan') {
 			when {
 				anyOf {
