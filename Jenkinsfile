@@ -13,7 +13,12 @@ pipeline {
 	    stage('File path') {
 		    steps{
 			    script {
+				    //def changeLogSets = currentBuild.changeSets
+				    def fpath = currentBuild.changeSets[0]
 				    def changeLogSets = currentBuild.changeSets
+				    print changeLogSets
+				    print fpath
+				    
 for (int i = 0; i < changeLogSets.size(); i++) {
     def entries = changeLogSets[i].items
     for (int j = 0; j < entries.length; j++) {
