@@ -14,9 +14,10 @@ pipeline {
 		    steps{
 			    script {
 				    //def changeLogSets = currentBuild.changeSets
-				    def fpath = currentBuild.changeSets[0]
+				    def fpath = currentBuild.changeSets[0].affectedFiles[0]
+				    def msg = currentBuild.changeSets[0].msg
 				    def changeLogSets = currentBuild.changeSets
-				    print changeLogSets
+				    print msg
 				    print fpath
 				    
 for (int i = 0; i < changeLogSets.size(); i++) {
