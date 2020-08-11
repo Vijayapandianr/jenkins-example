@@ -14,6 +14,13 @@ pipeline {
 		    steps{
 			    script {
 				    //def changeLogSets = currentBuild.changeSets
+				    def entries1 = changeLogSets[0].items
+					def entry1 = entries1[0]
+					def fileqw = new ArrayList(entry.affectedFiles)
+					def file = fileqw[0]
+					def ffpath = "${file.path}"
+				    
+				    echo "__________________function____________________"
 				    def fpath = filepath()
 				    print fpath
 			    }
@@ -167,9 +174,13 @@ def changeLogSets = currentBuild.changeSets
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            def ffpath = "  ${file.editType.name} ${file.path}"
+            def ffpath = "${file.path}"
             return ffpath
         }
     }
 }
+	
+	
+	
+	
 }
