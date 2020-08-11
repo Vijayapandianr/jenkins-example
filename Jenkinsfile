@@ -1,31 +1,25 @@
 
 import groovy.io.FileType
+def filepath = filepath ()
+				   
  
 pipeline {
     agent any
-    
+     environment {
+     def str_src = 'src'
+	 def str_test = 'test'
+     }
     stages {
         stage('Checkout Stage') {
             steps {
 			checkout scm
             }
         }
-	    stage('File path') {
-		    steps{
-			    script {
-				    def fpath = filepath()
-				    str_src = fpath.split('/');
-				    print fpath
-				    print str[0]
-				    def str_src = str[0]
-				    def str_test = 'test'
-			    }
-		    }
-	    }
+	  
 	    
 	    stage('condtional stage') {
                     when {
-                      expression { str_src == "src" }
+                      expression { filepath == "src" }
                     }
                     steps {
                         echo 'src success'
@@ -33,7 +27,7 @@ pipeline {
                 }
 	    stage('condtional stage 2') {
                     when {
-                      expression { str_test == "test" }
+                      expression { filepath == "test" }
                     }
                     steps {
                         echo 'test success'
@@ -188,7 +182,11 @@ def changeLogSets = currentBuild.changeSets
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
             def ffpath = "${file.path}"
-            return ffpath
+             str = ffpath.split('/');
+				    
+			def str_src = str[0]
+				    
+            return str_src
         }
     }
 } 
