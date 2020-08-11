@@ -13,7 +13,7 @@ pipeline {
 	    stage('File path') {
 		    steps{
 			    script {
-				    //def changeLogSets = currentBuild.changeSets
+				    def changeLogSets = currentBuild.changeSets
 				    def entries1 = changeLogSets[0].items
 					def entry1 = entries1[0]
 					def fileqw = new ArrayList(entry.affectedFiles)
