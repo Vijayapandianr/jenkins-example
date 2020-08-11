@@ -14,7 +14,9 @@ pipeline {
 		    steps{
 			    script {
 				    def fpath = filepath()
+				    str = fpath.split('/');
 				    print fpath
+				    print str[0]
 			    }
 		    }
 	    }
