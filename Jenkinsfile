@@ -1,6 +1,6 @@
 
 import groovy.io.FileType
-def filepath = filepath ()
+def filepath = filecpath ()
 				   
  
 pipeline {
@@ -170,7 +170,7 @@ pipeline {
     
 }
 
-def filepath () {
+def filecpath () {
 	
 def changeLogSets = currentBuild.changeSets
    for (int i = 0; i < changeLogSets.size(); i++) {
