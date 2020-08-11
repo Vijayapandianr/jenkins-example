@@ -5,10 +5,7 @@ def filepath = filecpath ()
  
 pipeline {
     agent any
-     environment {
-     def str_src = 'src'
-	 def str_test = 'test'
-     }
+     
     stages {
         stage('Checkout Stage') {
             steps {
@@ -182,10 +179,11 @@ def changeLogSets = currentBuild.changeSets
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
             def ffpath = "${file.path}"
+		print  ffpath
              str = ffpath.split('/');
 				    
-			def str_src = str[0]
-				    
+		def str_src = str[0]
+		   print  str_src
             return str_src
         }
     }
