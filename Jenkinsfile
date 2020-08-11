@@ -166,7 +166,7 @@ pipeline {
 def filepath () {
 	
 def changeLogSets = currentBuild.changeSets
-	for (int i = 0; i < changeLogSets.size(); i++) {
+/*	for (int i = 0; i < changeLogSets.size(); i++) {
     def entries = changeLogSets[i].items
     for (int j = 0; j < entries.length; j++) {
         def entry = entries[j]
@@ -178,7 +178,14 @@ def changeLogSets = currentBuild.changeSets
             return ffpath
         }
     }
-}
+} */
+		def entries1 = changeLogSets[0].items
+					def entry1 = entries1[0]
+					def fileqw = new ArrayList(entry.affectedFiles)
+					def file = fileqw[0]
+					def ffpath = "${file.path}"
+					echo 'dfsfsfdsff'
+					return ffpath
 	
 	
 	
