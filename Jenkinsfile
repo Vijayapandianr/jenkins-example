@@ -14,12 +14,21 @@ pipeline {
 		    steps{
 			    script {
 				    def fpath = filepath()
-				    str = fpath.split('/');
+				    str_src = fpath.split('/');
 				    print fpath
 				    print str[0]
 			    }
 		    }
 	    }
+	    
+	    stage('condtional stage') {
+                    when {
+                      expression { str_src == "src" }
+                    }
+                    steps {
+                        echo 'src success'
+                    }
+                }
 	    
 	    
         stage('Analysis and Unit Test stage') {
