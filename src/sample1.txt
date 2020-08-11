@@ -2,3 +2,4 @@ sample one
 Changes to fetch the file path zxczxczx
 file folder path
 file function
+split the path
