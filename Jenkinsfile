@@ -17,6 +17,8 @@ pipeline {
 				    str_src = fpath.split('/');
 				    print fpath
 				    print str[0]
+				    def str_src = str[0]
+				    def str_test = 'test'
 			    }
 		    }
 	    }
@@ -27,6 +29,14 @@ pipeline {
                     }
                     steps {
                         echo 'src success'
+                    }
+                }
+	    stage('condtional stage 2') {
+                    when {
+                      expression { str_test == "test" }
+                    }
+                    steps {
+                        echo 'test success'
                     }
                 }
 	    
