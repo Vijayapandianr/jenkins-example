@@ -1,6 +1,6 @@
 
 import groovy.io.FileType
-def filepath = filecpath ()
+
 				   
  
 pipeline {
@@ -15,19 +15,16 @@ pipeline {
 	  
 	    
 	    stage('condtional stage') {
-                    when {
-                      expression { filepath == "src" }
-                    }
+                    
                     steps {
-                        echo 'src success'
-                    }
-                }
-	    stage('condtional stage 2') {
-                    when {
-                      expression { filepath == "test" }
-                    }
-                    steps {
-                        echo 'test success'
+                       script {
+                            def str_src = filecpath()
+			       if(str_src =='src') {
+				 echo 'Changes made in Src folder'
+			       } else {
+				  echo 'Changes made in Jenkinsfile'
+			       }  
+                       }
                     }
                 }
 	    
